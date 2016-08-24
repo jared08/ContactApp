@@ -3,6 +3,7 @@ var app = express();
 var mongojs = require('mongojs');
 var db = mongojs('contactlist', ['contactlist']);
 var bodyParser = require('body-parser');
+var port = process.env.PORT || 80;
 
 app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json()); //allows server to parse the body of input it receives
@@ -49,5 +50,5 @@ app.put('/contactlist/:id', function (req, res) {
   	});
 });
 
-app.listen(3000);
-console.log("Server running on port 3000");
+app.listen(port);
+console.log("Server running on port: " + port);
